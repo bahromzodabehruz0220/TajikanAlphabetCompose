@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import tj.behruz.tajikanalphabet.ui.theme.TajikanAlphabetTheme
-import tj.behruz.tajikanalphabet.ui.theme.navigation.AppNavigation
+import tj.behruz.tajikanalphabet.ui.navigation.AppNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
