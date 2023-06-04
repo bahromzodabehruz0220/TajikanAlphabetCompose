@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'tj.behruz.tajikanalphabet'
+    namespace 'tj.behruz.alphabet'
     compileSdk 33
 
     defaultConfig {
-        applicationId "tj.behruz.tajikanalphabet"
+        applicationId "tj.behruz.alphabet"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
