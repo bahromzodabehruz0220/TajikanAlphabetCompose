@@ -7,6 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -29,7 +30,13 @@ fun AlphabetDetailScreen(navController: NavController, letterArg: Int) {
     val letterId = remember { mutableStateOf(letterArg) }
     val mediaPlayer = MediaPlayer.create(LocalContext.current, counterState.value.letterSound)
 
-    //  mediaPlayer.start()
+    mediaPlayer.start()
+
+    DisposableEffect(key1 = true) {
+        onDispose {
+            mediaPlayer.stop()
+        }
+    }
 
     ConstraintLayout(
         modifier = Modifier
