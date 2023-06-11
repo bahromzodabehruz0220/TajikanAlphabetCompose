@@ -14,10 +14,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.navigation.NavController
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
 import tj.behruz.alphabet.R
 import tj.behruz.alphabet.data.source.letters
 import tj.behruz.alphabet.ui.theme.AppTheme
@@ -105,6 +110,23 @@ fun AlphabetDetailScreen(navController: NavController, letterArg: Int) {
                 end.linkTo(parent.end, 16.dp)
                 top.linkTo(parent.top, 16.dp)
             })
+        val unitId = stringResource(
+            id = R.string.ad_mob_banner_id
+        )
+        AndroidView(
+            modifier = Modifier.constrainAs(ads) {
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+            },
+            factory = { context ->
+                AdView(context).apply {
+                    setAdSize(AdSize.BANNER)
+                    adUnitId = unitId
+                    loadAd(AdRequest.Builder().build())
+                }
+            })
+
     }
 
 }
